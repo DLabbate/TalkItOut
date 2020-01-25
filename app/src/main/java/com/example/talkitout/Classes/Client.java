@@ -1,4 +1,4 @@
-package com.example.talkitout;
+package com.example.talkitout.Classes;
 
 import java.util.ArrayList;
 

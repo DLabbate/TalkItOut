@@ -1,4 +1,6 @@
-package com.example.talkitout;
+package com.example.talkitout.Classes;
+
+import com.example.talkitout.Classes.Person;
 
 public class Practitioner extends Person {
 
