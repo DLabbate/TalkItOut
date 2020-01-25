@@ -14,4 +14,10 @@ public class Practitioner extends Person {
         clients = new ArrayList<Client>();
     }
 
+    public void addNewClient(Client client)
+    {
+        clients.add(client);
+    }
+
+
 }
