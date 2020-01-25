@@ -12,6 +12,7 @@ import com.example.talkitout.R;
 public class MainActivity extends AppCompatActivity {
 
     protected Button loginButton = null;
+    protected Button registerButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(onClickLoginButton);
+
+        registerButton = (Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(onClickRegisterButton);
     }
 
     private Button.OnClickListener onClickLoginButton = new Button.OnClickListener(){
@@ -33,5 +37,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, selectInput.class);
         startActivity(intent);
     }
+
+    private Button.OnClickListener onClickRegisterButton = new Button.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            register();
+        }
+    };
+
+    private void register() {
+        Intent intent = new Intent(this, registerActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }
