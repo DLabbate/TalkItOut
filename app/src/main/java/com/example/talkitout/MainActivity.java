@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginButton = (Button) findViewById(R.id.loginButton);
-
+        loginButton.setOnClickListener(onClickLoginButton);
     }
 
     private Button.OnClickListener onClickLoginButton = new Button.OnClickListener(){

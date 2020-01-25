@@ -6,4 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".selectInput">
 
+    <Button
+        android:id="@+id/audioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="83dp"
+        android:text="Audio"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/textButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="324dp"
+        android:text="Text"
+        app:layout_constraintStart_toEndOf="@+id/audioButton"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
