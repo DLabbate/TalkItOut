@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".audioActivity"></activity>
+        <activity android:name=".registerActivity"></activity>
+        <activity android:name=".textActivity" />
+        <activity android:name=".audioActivity" />
         <activity android:name=".selectInput" />
         <activity android:name=".MainActivity">
             <intent-filter>
