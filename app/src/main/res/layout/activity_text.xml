@@ -6,30 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".Activities.textActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="190dp"
-        android:layout_height="183dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="33dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/doneButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="222dp"
+        android:layout_marginBottom="189dp"
         android:text="DONE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textEditText" />
+
+    <EditText
+        android:id="@+id/textEditText"
+        android:layout_width="244dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginBottom="45dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
