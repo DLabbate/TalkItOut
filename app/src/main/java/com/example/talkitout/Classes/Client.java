@@ -6,7 +6,7 @@ public class Client extends Person {
 
     protected ArrayList<Mood> moods;
 
-    Client(String id,String username,String name,String password)
+    public Client(String id,String username,String name,String password)
     {
         super(id,username,name,password);
         moods = new ArrayList<Mood>();

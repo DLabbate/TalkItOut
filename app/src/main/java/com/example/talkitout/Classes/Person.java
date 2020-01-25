@@ -6,7 +6,7 @@ public class Person {
     protected String name;
     protected String password;
 
-    Person(String id,String username,String name,String password)
+    public Person(String id,String username,String name,String password)
     {
         this.id = id;
         this.username = username;

@@ -2,11 +2,16 @@ package com.example.talkitout.Classes;
 
 import com.example.talkitout.Classes.Person;
 
+import java.util.ArrayList;
+
 public class Practitioner extends Person {
 
-    Practitioner(String id,String username,String name,String password)
+    ArrayList<Client> clients;
+
+    public Practitioner(String id,String username,String name,String password)
     {
         super(id,username,name,password);
+        clients = new ArrayList<Client>();
     }
 
 }
