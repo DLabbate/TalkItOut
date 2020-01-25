@@ -1,14 +1,16 @@
-package com.example.talkitout;
+package com.example.talkitout.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class textActivity extends AppCompatActivity {
+import com.example.talkitout.R;
+
+public class audioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text);
+        setContentView(R.layout.activity_audio);
     }
 }

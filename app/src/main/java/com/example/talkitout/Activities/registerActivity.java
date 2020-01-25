@@ -1,8 +1,10 @@
-package com.example.talkitout;
+package com.example.talkitout.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.talkitout.R;
 
 public class registerActivity extends AppCompatActivity {
 
