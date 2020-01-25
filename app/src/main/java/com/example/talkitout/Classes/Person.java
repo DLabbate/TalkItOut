@@ -1,4 +1,4 @@
-package com.example.talkitout;
+package com.example.talkitout.Classes;
 
 public class Person {
     protected String id;

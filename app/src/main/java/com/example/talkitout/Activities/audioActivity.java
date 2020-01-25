@@ -1,4 +1,4 @@
-package com.example.talkitout;
+package com.example.talkitout.Activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import com.example.talkitout.R;
 
 public class audioActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SPEECH_INPUT = 0;
