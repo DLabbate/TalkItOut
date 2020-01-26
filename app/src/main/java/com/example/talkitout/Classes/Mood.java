@@ -24,4 +24,9 @@ public class Mood {
     public int getIntensity(){
         return intensity;
     }
+
+    public String getClient_username()
+    {
+        return client_username;
+    }
 }
