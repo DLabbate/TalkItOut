@@ -38,7 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);}
+        super(context, DATABASE_NAME, null, 1);
+//        context.deleteDatabase(DATABASE_NAME);
+        }
 
 
     @Override
@@ -57,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        System.out.println("AHOY MATEY");
         db.execSQL("DROP TABLE IF EXISTS " + CLIENT_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + PRACTITIONER_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + MOOD_TABLE_NAME);
@@ -120,9 +123,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(PRACTITIONER_COL1, username);// Since that's where this item is being stored.
         contentValues.put(PRACTITIONER_COL2, password);
         contentValues.put(PRACTITIONER_COL3, name);
-
+        System.out.println("#########" + contentValues.toString());
+        System.out.println(db.toString());
         long result = db.insert(PRACTITIONER_TABLE_NAME, null, contentValues);
-
+        System.out.println("#########" + result );
         if (result == -1){
             return false;
         }
