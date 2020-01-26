@@ -25,10 +25,13 @@ public class graphActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
-        for(int i= MainActivity.moods.size() - 7; i<MainActivity.moods.size(); i++){
-            y = MainActivity.moods.get(i).getIntensity();
-            //Mood current = moods(i);
-            series.appendData(new DataPoint(i,y), true, 7);
+
+        for(int i = 0; i<MainActivity.moods.size(); i++){
+            if(MainActivity.moods.get(i).getClient_username() == currentClient){
+                y = MainActivity.moods.get(i).getIntensity();
+                //Mood current = moods(i);
+                series.appendData(new DataPoint(i,y), true, 7);
+            }
         }
 
         graph.addSeries(series);
