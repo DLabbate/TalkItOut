@@ -5,19 +5,18 @@ import java.net.*;
 
 public class Pipeline
 {
-    PrintStream streamToServer;
-    BufferedReader streamFromServer;
-    Socket toServer;
+    public static PrintStream streamToServer;
+    public static BufferedReader streamFromServer;
+    public static Socket toServer;
 
     public Pipeline(String message)
     {
-        connectToServer(message);
     }
 
-    private void connectToServer(String message)
+    public static Integer connectToServer(String message)
     {
         if (message.equals("")){
-            return;
+            return 0;
         }
         try{
             toServer = new Socket("172.30.190.229", 6789);
@@ -25,11 +24,13 @@ public class Pipeline
             streamToServer = new PrintStream(toServer.getOutputStream());
             streamToServer.println(message);
             String str = streamFromServer.readLine();
-            System.out.println("The Server Says "+str);
+            Integer mood = Integer.parseInt(str);
+            return mood;
         }
         catch(Exception e)
         {
             System.out.println("Exception "+e);
         }
+        return 0;
     }
 }
