@@ -32,11 +32,15 @@ public class MainActivity extends AppCompatActivity {
         //**TEST CODE*************************************************************
         DatabaseHelper DBhelper = new DatabaseHelper(MainActivity.this);
         DBhelper.addClientData("dlabbate","Domenic Labbate","mypassword","1234");
+        DBhelper.addClientData("mgrande","MGrande","hispassword","4321");
         ArrayList<Client> testclients = DBhelper.getAllClients();
         for (int i=0 ; i<testclients.size(); i++)
         {
             String username = testclients.get(i).getUsername();
-            System.out.println("****************USERNAME"+username);
+            String name = testclients.get(i).getName();
+            String password = testclients.get(i).getPassword();
+            String practitioner = testclients.get(i).getPractitioner();
+            System.out.println("*****USERNAME: "+username + " NAME: " +name+ " PASSWORD: " +password + " PRACTITIONER " +practitioner);
         }
 
         //************************************************************************

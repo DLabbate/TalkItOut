@@ -103,8 +103,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String username = cursor.getString(cursor.getColumnIndex(CLIENT_COL1));
                 String name = cursor.getString(cursor.getColumnIndex(CLIENT_COL2));
                 String password = cursor.getString(cursor.getColumnIndex(CLIENT_COL3));
-                String practitioner = cursor.getString(cursor.getColumnIndex(CLIENT_COL3));
-                clients.add(new Client(username,name,password));
+                String practitioner = cursor.getString(cursor.getColumnIndex(CLIENT_COL4));
+                clients.add(new Client(username,name,password,practitioner));
             }
         }
         finally
