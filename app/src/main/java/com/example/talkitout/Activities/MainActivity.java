@@ -124,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                     current.getPassword().equals(passwordInput)) {
                 this.loggedInUser = usernameInput;
                 this.loggedInStatus = status.Client;
-                startActivity(intent); // TODO Change from selectinput to the clientView
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 return;
             }
         }
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 this.loggedInUser = usernameInput;
                 this.loggedInStatus = status.Practitioner;
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 return;
             }
         }
@@ -152,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void register() {
         Intent intent = new Intent(this, registerActivity.class);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         startActivity(intent);
     }
 
