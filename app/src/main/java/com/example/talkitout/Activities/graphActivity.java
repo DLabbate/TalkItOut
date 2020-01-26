@@ -26,6 +26,12 @@ public class graphActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMaxX(7);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(5);
         Integer count=0;
         for(int i = 0; i<MainActivity.moods.size(); i++){
             if(MainActivity.moods.get(i).getClient_username().equals(currentClient)){
