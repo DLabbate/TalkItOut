@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.text.method.PasswordTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Practitioner;
@@ -44,6 +45,7 @@ public class  registerActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         practitionerEditText = findViewById(R.id.practitionerEditText);
+        passwordEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
     }
 
     private void setUpOnClickListeners() {
@@ -117,6 +119,27 @@ public class  registerActivity extends AppCompatActivity {
 
     }
 
+    private class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return new PasswordCharSequence(source);
+        }
+
+        public class PasswordCharSequence implements CharSequence {
+            private CharSequence mSource;
+            public PasswordCharSequence(CharSequence source) {
+                mSource = source; // Store char sequence
+            }
+            public char charAt(int index) {
+                return '*'; // This is the important part
+            }
+            public int length() {
+                return mSource.length(); // Return default
+            }
+            public CharSequence subSequence(int start, int end) {
+                return mSource.subSequence(start, end); // Return default
+            }
+        }
+    };
 
 
 }

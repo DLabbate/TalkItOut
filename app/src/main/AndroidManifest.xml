@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.graphActivity"></activity>
+        <activity
+            android:name=".Activities.RecycleV"
+            android:label="@string/title_activity_recycle_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activities.graphActivity" />
         <activity android:name=".Activities.displayActivity" />
         <activity android:name=".Activities.registerActivity" />
         <activity android:name=".Activities.textActivity" />
