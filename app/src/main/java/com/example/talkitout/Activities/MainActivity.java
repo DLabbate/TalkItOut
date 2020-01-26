@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Mood;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         userEditText = findViewById(R.id.userEditText);
         passEditText = findViewById(R.id.passEditText);
-        passEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        passEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
 
         DBHelper = new DatabaseHelper(MainActivity.this);
 
@@ -155,14 +156,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void register() {
         Intent intent = new Intent(this, registerActivity.class);
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         startActivity(intent);
     }
 
+    private class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return new PasswordCharSequence(source);
+        }
 
-
-
-
-
-
+        public class PasswordCharSequence implements CharSequence {
+            private CharSequence mSource;
+            public PasswordCharSequence(CharSequence source) {
+                mSource = source; // Store char sequence
+            }
+            public char charAt(int index) {
+                return '*'; // This is the important part
+            }
+            public int length() {
+                return mSource.length(); // Return default
+            }
+            public CharSequence subSequence(int start, int end) {
+                return mSource.subSequence(start, end); // Return default
+            }
+        }
+    };
 }
