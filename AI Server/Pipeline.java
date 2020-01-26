@@ -14,13 +14,9 @@ class Pipeline
 	
 	public static void main(String[] args)
 	{
-		// Model parameters
-		Properties modelProperties = new Properties();
-		modelProperties.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
-		modelProperties.setProperty("coref.algorithm", "neural");
 		
-		// Start pipeline
-		StanfordCoreNLP pipeline = new StanfordCoreNLP(modelProperties);
+		// Start pipeline and parameters
+		StanfordCoreNLP pipeline = new StanfordCoreNLP(properties());
 		
 		// Get client's input and preprocess it
 		Annotation clientInput = new Annotation(preprocessing(Placeholder));
@@ -69,5 +65,14 @@ class Pipeline
 		String processedString = text.toLowerCase().replaceAll("[^a-zA-Z0-9\\s.\']", "");
 		
 		return processedString;
+	}
+	
+	public static Properties properties()
+	{
+		Properties modelProperties = new Properties();
+		modelProperties.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
+		modelProperties.setProperty("coref.algorithm", "neural");
+		
+		return modelProperties;
 	}
 }
