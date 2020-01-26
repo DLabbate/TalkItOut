@@ -111,11 +111,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean addPractitionerData(String username, String password){
+    public boolean addPractitionerData(String username, String password, String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PRACTITIONER_COL1, username);// Since that's where this item is being stored.
         contentValues.put(PRACTITIONER_COL2, password);
+        contentValues.put(PRACTITIONER_COL3, name);
 
         long result = db.insert(PRACTITIONER_TABLE_NAME, null, contentValues);
 
