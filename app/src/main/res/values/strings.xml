@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TalkItOut</string>
+    <string name="title_activity_recycle_view">RecycleView</string>
 </resources>

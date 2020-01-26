@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.text.method.HideReturnsTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Mood;
-import com.example.talkitout.Classes.Pipeline;
 import com.example.talkitout.Classes.Practitioner;
 import com.example.talkitout.R;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static String loggedInUser = "";
     public static status loggedInStatus;
-
 
 
     @Override
@@ -154,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void register() {
-        Intent intent = new Intent(this, registerActivity.class);
+        Intent intent = new Intent(this, RecycleV.class);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         startActivity(intent);
     }
