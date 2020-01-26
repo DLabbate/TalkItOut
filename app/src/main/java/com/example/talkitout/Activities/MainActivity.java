@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.talkitout.Classes.Client;
 import com.example.talkitout.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +28,18 @@ public class MainActivity extends AppCompatActivity {
 
         registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(onClickRegisterButton);
+
+        //**TEST CODE*************************************************************
+        DatabaseHelper DBhelper = new DatabaseHelper(MainActivity.this);
+        DBhelper.addClientData("dlabbate","Domenic Labbate","mypassword","1234");
+        ArrayList<Client> testclients = DBhelper.getAllClients();
+        for (int i=0 ; i<testclients.size(); i++)
+        {
+            String username = testclients.get(i).getUsername();
+            System.out.println("****************USERNAME"+username);
+        }
+
+        //************************************************************************
     }
 
     private Button.OnClickListener onClickLoginButton = new Button.OnClickListener(){

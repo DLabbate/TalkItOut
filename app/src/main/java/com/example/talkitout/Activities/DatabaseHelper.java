@@ -94,7 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         ArrayList<Client> clients = new ArrayList<Client>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        Cursor cursor =  db.rawQuery( "select * from " +CLIENT_TABLE_NAME, null );
         cursor.moveToFirst();
 
         try{
