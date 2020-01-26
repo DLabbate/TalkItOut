@@ -163,7 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         ArrayList<Practitioner> practitioners = new ArrayList<Practitioner>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        Cursor cursor =  db.rawQuery( "select * from " +PRACTITIONER_TABLE_NAME, null );
         cursor.moveToFirst();
 
         try{
@@ -187,7 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         ArrayList<Mood> moods = new ArrayList<Mood>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        Cursor cursor =  db.rawQuery( "select * from " + MOOD_TABLE_NAME, null );
         cursor.moveToFirst();
 
 
