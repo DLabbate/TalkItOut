@@ -10,4 +10,37 @@ The app allows for users and practitioners to create an account and start right 
 
 Once logged in, clients can chose to write their thoughts or use speech-to-text to share their thoughts out loud. When this is done in this project, the text is sent through a network socket to connect to the NLP's Recurrent Neural Network in order to perform sentiment analysis using Stanford University CoreNLP's integrated toolkit to determine the overall feeling of the daily log. The log and the sentiment score is then available for the practitioner's eyes only.
 
-Practitioners can log in to view their clients' logs and scores to better help them develop their plan with the client. Practitioners can also view a 7-day trend of their client's mood based on the NLP's sentiment analysis.
+Practitioners can view a 7-day trend of their client's mood based on the NLP's sentiment analysis to better help them develop their plan with the client.
+
+### Screenshots ###
+
+[graph]: https://github.com/DLabbate/TalkItOut/blob/master/pics/7DayTrend.png "7-day Trend"
+[Mic]: https://github.com/DLabbate/TalkItOut/blob/master/pics/MicLog.png "Logging with Speech-to-Text"
+[Logging]: https://github.com/DLabbate/TalkItOut/blob/master/pics/OptionsForLog.png "Options for Logging"
+[Pract]: https://github.com/DLabbate/TalkItOut/blob/master/pics/PractitionerViewOfClients.png "Practitioner View of Clients"
+[Sign-in]: https://github.com/DLabbate/TalkItOut/blob/master/pics/Signin.png "Sign-in"
+[Texting]: https://github.com/DLabbate/TalkItOut/blob/master/pics/TextLog.png "Logging with Keyboard"
+
+![Sign-in]
+
+Sign-in Screen of App
+
+![Logging]
+
+Two Options for Logging
+
+![Texting]
+
+Daily Log with Keyboard
+
+![Mic]
+
+Daily Log with Speech-to-Text
+
+![Pract]
+
+Practitioner's List of Clients
+
+![graph]
+
+7-day Trend of Client's Scores
