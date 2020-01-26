@@ -36,9 +36,9 @@ public class audioActivity extends AppCompatActivity {
 
         mTextTv = findViewById(R.id.textTv);
         doneButton = findViewById(R.id.doneButton);
-        doneButton.setOnClickListener(onClickSubmitButton);
         mVoiceBtn = findViewById(R.id.voiceBtn);
 
+        doneButton.setOnClickListener(onClickSubmitButton);
         //Clicking this button will open the speech dialog.
         mVoiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
