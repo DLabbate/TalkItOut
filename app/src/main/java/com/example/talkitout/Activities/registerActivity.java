@@ -31,6 +31,12 @@ public class  registerActivity extends AppCompatActivity {
         setUpOnClickListeners();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     private void setupUI()
     {
         signUpButton = findViewById(R.id.signupButton);
@@ -54,6 +60,7 @@ public class  registerActivity extends AppCompatActivity {
                 {
                     //TO DO
                     //ADD NEW PRACTITIONER
+                    //Verify new practitioner username is not taken
                     Intent gotoDisplay = new Intent(registerActivity.this,displayActivity.class);
                     startActivity(gotoDisplay);
                 }
@@ -61,8 +68,25 @@ public class  registerActivity extends AppCompatActivity {
                 else
                 {
                     //ADD NEW CLIENT
+                    //Verify new client username is not taken
+                    String practitioner = practitionerEditText.getText().toString();
+                    myDB.addClientData(username,name,password,practitioner);
                     Intent gotoselectInput = new Intent(registerActivity.this,selectInput.class);
                     startActivity(gotoselectInput);
+                }
+            }
+        });
+
+        usertypeCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (usertypeCheckBox.isChecked())
+                {
+                    practitionerEditText.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    practitionerEditText.setVisibility(View.VISIBLE);
                 }
             }
         });
