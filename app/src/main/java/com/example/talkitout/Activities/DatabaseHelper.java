@@ -6,6 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.talkitout.Classes.*;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "myList.db";
@@ -83,6 +88,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("Select * FROM " + CLIENT_TABLE_NAME, null);
         return data;
+    }
+
+    public ArrayList<Client> getAllClients()
+    {
+        ArrayList<Client> clients = new ArrayList<Client>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        cursor.moveToFirst();
+
+        try{
+            while (cursor.moveToNext())
+            {
+                String username = cursor.getString(cursor.getColumnIndex(CLIENT_COL1));
+                String name = cursor.getString(cursor.getColumnIndex(CLIENT_COL2));
+                String password = cursor.getString(cursor.getColumnIndex(CLIENT_COL3));
+                String practitioner = cursor.getString(cursor.getColumnIndex(CLIENT_COL3));
+                clients.add(new Client(username,name,password));
+            }
+        }
+        finally
+        {
+            db.close();
+        }
+
+        return clients;
     }
 
 

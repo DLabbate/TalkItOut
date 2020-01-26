@@ -8,9 +8,9 @@ public class Practitioner extends Person {
 
     ArrayList<Client> clients;
 
-    public Practitioner(String id,String username,String name,String password)
+    public Practitioner(String username,String name,String password)
     {
-        super(id,username,name,password);
+        super(username,name,password);
         clients = new ArrayList<Client>();
     }
 
