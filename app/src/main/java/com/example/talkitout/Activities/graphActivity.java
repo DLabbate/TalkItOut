@@ -12,6 +12,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class graphActivity extends AppCompatActivity {
 
     LineGraphSeries<DataPoint> series;
+    static String currentClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

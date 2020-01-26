@@ -150,13 +150,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void register() {
-<<<<<<< HEAD
         Intent intent = new Intent(this, RecycleV.class);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-=======
-        Intent intent = new Intent(this, registerActivity.class);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
->>>>>>> fae9932910c39240d635803641c78a103e33cdd2
+//        Intent intent = new Intent(this, registerActivity.class);
         startActivity(intent);
     }
 

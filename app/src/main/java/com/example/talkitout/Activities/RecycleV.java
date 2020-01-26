@@ -1,5 +1,6 @@
 package com.example.talkitout.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.talkitout.Classes.Client;
@@ -45,6 +46,8 @@ public class RecycleV extends AppCompatActivity {
         mAdapter = new ClientAdapter(mClients);
         mRecyclerView.setAdapter(mAdapter);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,5 +56,11 @@ public class RecycleV extends AppCompatActivity {
             }
         });
     }
+
+    public void transitionToGraph(String clientUsername){
+        Intent intent = new Intent(this, graphActivity.class);
+        startActivity(intent);
+    }
+
 
 }
