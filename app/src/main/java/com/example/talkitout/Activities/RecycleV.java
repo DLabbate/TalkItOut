@@ -33,12 +33,16 @@ public class RecycleV extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mClients = new ArrayList<>();
-
-        Client first = new Client("abc", "def", "ghi", "lmo");
-        mClients.add(first);
-        mClients.add(first);
-        mClients.add(first);
-        mClients.add(first);
+        for (Client c : MainActivity.clients){
+            if (c.getPractitioner().equals(MainActivity.loggedInUser)) {
+                mClients.add(c);
+            }
+        }
+//        Client first = new Client("abc", "def", "ghi", "lmo");
+//        mClients.add(first);
+//        mClients.add(first);
+//        mClients.add(first);
+//        mClients.add(first);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);

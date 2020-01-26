@@ -35,6 +35,5 @@ public class graphActivity extends AppCompatActivity {
         }
 
         graph.addSeries(series);
-
     }
 }
