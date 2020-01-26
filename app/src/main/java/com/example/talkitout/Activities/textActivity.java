@@ -41,8 +41,8 @@ public class textActivity extends AppCompatActivity {
     private void submit() {
         Intent intent = new Intent(this, selectInput.class);
         Pipeline p = new Pipeline();
-        Integer mood = p.connectToServer((textEditText.getText().toString()));
-        if (mood != 0){
+        Integer intensity = p.connectToServer((textEditText.getText().toString()));
+        if (intensity != 0){
             Date c = Calendar.getInstance().getTime();
             Random rand = new Random();
             Integer x = rand.nextInt(100);
@@ -50,7 +50,7 @@ public class textActivity extends AppCompatActivity {
             SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
             String formattedDate = df.format(c);
             MainActivity.DBHelper.addMoodData(x,MainActivity.loggedInUser, (textEditText.getText().toString()), 8, formattedDate);
-            Toast.makeText(this,  "The mood is : " +  mood, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,  "The mood is : " +  intensity, Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
     }
