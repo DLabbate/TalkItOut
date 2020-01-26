@@ -61,8 +61,6 @@ class Pipeline
 		
 		while(i < array.length)
 		{
-			System.out.println('*'*(1+i));
-			System.out.println();
 			sum += array[i];
 			i++;
 		}
