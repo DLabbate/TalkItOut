@@ -14,6 +14,7 @@ import android.text.method.HideReturnsTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Mood;
+import com.example.talkitout.Classes.Pipeline;
 import com.example.talkitout.Classes.Practitioner;
 import com.example.talkitout.R;
 

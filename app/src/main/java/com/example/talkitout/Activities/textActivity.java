@@ -1,5 +1,6 @@
 package com.example.talkitout.Activities;
 
+import androidx.annotation.IntegerRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,11 @@ import android.widget.Toast;
 
 import com.example.talkitout.Classes.Pipeline;
 import com.example.talkitout.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 public class textActivity extends AppCompatActivity {
     EditText textEditText;
@@ -34,10 +40,18 @@ public class textActivity extends AppCompatActivity {
 
     private void submit() {
         Intent intent = new Intent(this, selectInput.class);
-        Integer mood = Pipeline.connectToServer(textEditText.getText().toString());
+        Pipeline p = new Pipeline();
+        Integer mood = p.connectToServer((textEditText.getText().toString()));
         if (mood != 0){
+            Date c = Calendar.getInstance().getTime();
+            Random rand = new Random();
+            Integer x = rand.nextInt(100);
+            System.out.println(x);
+            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+            String formattedDate = df.format(c);
+            MainActivity.DBHelper.addMoodData(x,MainActivity.loggedInUser, (textEditText.getText().toString()), 8, formattedDate);
+            Toast.makeText(this,  "The mood is : " +  mood, Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
-        Toast.makeText(this, textEditText.toString() + " " + mood, Toast.LENGTH_SHORT).show();
     }
 }

@@ -27,10 +27,6 @@ public class  registerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        /*
-        editText = (EditText) findViewById(R.id.editText);
-        btnAdd = (Button) findViewByID(R.id.btnAdd);
-        */
         setupUI();
         setUpOnClickListeners();
     }
