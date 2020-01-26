@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.example.talkitout.Classes.Client;
+import com.example.talkitout.Classes.Practitioner;
 import com.example.talkitout.R;
+
+import java.util.ArrayList;
 
 public class  registerActivity extends AppCompatActivity {
 
@@ -61,7 +65,7 @@ public class  registerActivity extends AppCompatActivity {
                     //TO DO
                     //ADD NEW PRACTITIONER
                     //Verify new practitioner username is not taken
-                    Intent gotoDisplay = new Intent(registerActivity.this,displayActivity.class);
+                    Intent gotoDisplay = new Intent(registerActivity.this,MainActivity.class);
                     startActivity(gotoDisplay);
                 }
 
@@ -71,7 +75,7 @@ public class  registerActivity extends AppCompatActivity {
                     //Verify new client username is not taken
                     String practitioner = practitionerEditText.getText().toString();
                     myDB.addClientData(username,name,password,practitioner);
-                    Intent gotoselectInput = new Intent(registerActivity.this,selectInput.class);
+                    Intent gotoselectInput = new Intent(registerActivity.this,MainActivity.class);
                     startActivity(gotoselectInput);
                 }
             }
@@ -91,7 +95,6 @@ public class  registerActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }
