@@ -20,4 +20,8 @@ public class Mood {
         this.client_username = client_username;
         this.date = date;
     }
+
+    public int getIntensity(){
+        return intensity;
+    }
 }

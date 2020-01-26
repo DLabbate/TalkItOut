@@ -49,7 +49,7 @@ public class textActivity extends AppCompatActivity {
             System.out.println(x);
             SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
             String formattedDate = df.format(c);
-            MainActivity.DBHelper.addMoodData(x,MainActivity.loggedInUser, (textEditText.getText().toString()), 8, formattedDate);
+            MainActivity.DBHelper.addMoodData(x,MainActivity.loggedInUser, (textEditText.getText().toString()),intensity, formattedDate);
             Toast.makeText(this,  "The mood is : " +  intensity, Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
