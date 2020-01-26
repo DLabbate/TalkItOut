@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.talkitout.R;
@@ -13,8 +14,9 @@ import com.example.talkitout.R;
 public class selectInput extends AppCompatActivity {
 
     //protected Button audioButton = null;
-    protected Button textButton = null;
+    //protected Button textButton = null;
     protected ImageView audioImage = null;
+    protected ImageView writeImage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,14 @@ public class selectInput extends AppCompatActivity {
         //audioButton = (Button) findViewById(R.id.audioButton);
         //audioButton.setOnClickListener(onClickAudioButton);
 
-        textButton = (Button) findViewById(R.id.textButton);
-        textButton.setOnClickListener(onClickTextButton);
+        //textButton = (Button) findViewById(R.id.textButton);
+        //textButton.setOnClickListener(onClickTextButton);
 
         audioImage = (ImageView) findViewById(R.id.audioImageView);
         audioImage.setOnClickListener(onClickAudioImage);
+
+        writeImage = (ImageView) findViewById(R.id.writeImageView);
+        writeImage.setOnClickListener(onClickTextButton);
     }
 
 
@@ -47,11 +52,16 @@ public class selectInput extends AppCompatActivity {
     private Button.OnClickListener onClickTextButton = new Button.OnClickListener(){
         @Override
         public void onClick(View v) {
-            text();
+            write();
         }
     };
 
-    private void text() {
+    //private void text() {
+    //    Intent intent = new Intent(this, textActivity.class);
+    //    startActivity(intent);
+    //}
+
+    private void write() {
         Intent intent = new Intent(this, textActivity.class);
         startActivity(intent);
     }

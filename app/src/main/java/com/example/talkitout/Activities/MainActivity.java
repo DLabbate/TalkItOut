@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //DBHelper.addMoodData(123, "john", "message", 5, "2020-01-10 12:08:5.5");
-        Date date = Date.valueOf("2020-01-10 12:08:5.5");
-        System.out.println("##############" + date.toString());
+        //Date date = Date.valueOf("2020-01-10 12:08:5.5");
+        //System.out.println("##############" + date.toString());
 
 
 

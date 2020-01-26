@@ -6,27 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".Activities.selectInput">
 
-    <Button
-        android:id="@+id/textButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="92dp"
-        android:text="Text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/audioImageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/audioImageView"
-        android:layout_width="0dp"
-        android:layout_height="93dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginEnd="53dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="60dp"
         android:background="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textButton"
+        app:layout_constraintEnd_toStartOf="@+id/writeImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_mic" />
+
+    <ImageView
+        android:id="@+id/writeImageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/colorGrey"
+        android:tint="@color/colorLightBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/audioImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_edit_black_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
