@@ -20,13 +20,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CLIENT_TABLE_NAME = "Clients_Data";
     public static final String PRACTITIONER_TABLE_NAME = "Practitioner_Data";
     public static final String MOOD_TABLE_NAME = "Mood_Data";
+
     public static final String CLIENT_COL1 = "USERNAME";
     public static final String CLIENT_COL2 = "NAME";
     public static final String CLIENT_COL3 = "PASSWORD";
     public static final String CLIENT_COL4 = "PRACTITIONER";
+
     public static final String PRACTITIONER_COL1 = "USERNAME";
     public static final String PRACTITIONER_COL2 = "PASSWORD";
     public static final String PRACTITIONER_COL3 = "NAME";
+
     public static final String MOOD_COL1 = "ID";
     public static final String MOOD_COL2 = "CLIENT_USER";
     public static final String MOOD_COL3 = "MESSAGE";

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.method.HideReturnsTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Practitioner;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Client> clients;
     public static ArrayList<Practitioner> practitioners;
 
-    public enum status  {
+    public enum status {
         Practitioner,
         Client
     };
@@ -51,27 +52,44 @@ public class MainActivity extends AppCompatActivity {
 
         userEditText = findViewById(R.id.userEditText);
         passEditText = findViewById(R.id.passEditText);
+        passEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
         DBHelper = new DatabaseHelper(MainActivity.this);
+
+        //************************************************************************
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userEditText.setText("");
+        passEditText.setText("");
         clients = DBHelper.getAllClients();
         practitioners = DBHelper.getAllPractitioners();
+
 
 //        //**TEST CODE*************************************************************
 //        DBHelper.addClientData("dlabbate","Domenic Labbate","mypassword","1234");
 //        DBHelper.addClientData("mgrande","MGrande","hispassword","4321");
 //        ArrayList<Client> testclients = DBhelper.getAllClients();
-//        for (int i=0 ; i<testclients.size(); i++)
-//        {
-//            String username = testclients.get(i).getUsername();
-//            String name = testclients.get(i).getName();
-//            String password = testclients.get(i).getPassword();
-//            String practitioner = testclients.get(i).getPractitioner();
-//            System.out.println("*****USERNAME: "+username + " NAME: " +name+ " PASSWORD: " +password + " PRACTITIONER " +practitioner);
-//        }
+        for (int i=0 ; i<clients.size(); i++)
+        {
+            String username = clients.get(i).getUsername();
+            String name = clients.get(i).getName();
+            String password = clients.get(i).getPassword();
+            String practitioner = clients.get(i).getPractitioner();
+            System.out.println("*****USERNAME: "+username + " NAME: " +name+ " PASSWORD: " +password + " PRACTITIONER " +practitioner);
+        }
 
-        //************************************************************************
+        for (int i=0 ; i<practitioners.size(); i++)
+        {
+            String username = practitioners.get(i).getUsername();
+            String name = practitioners.get(i).getName();
+            String password = practitioners.get(i).getPassword();
+            System.out.println("*****USERNAME: "+username + " NAME: " +name+ " PASSWORD: " +password);
+        }
+
     }
-
     private Button.OnClickListener onClickLoginButton = new Button.OnClickListener(){
         @Override
         public void onClick(View v) {

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class  registerActivity extends AppCompatActivity {
 
-    DatabaseHelper myDB;
     CheckBox usertypeCheckBox;
     EditText nameEditText, usernameEditText, passwordEditText, practitionerEditText;
     Button signUpButton;
@@ -55,25 +54,31 @@ public class  registerActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameEditText.getText().toString();
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
+                String name = nameEditText.getText().toString().trim();
+                String username = usernameEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
 
                 if (!isNameAvailable(username)) {
+                    displayMessage("Username unavailable.");
+                    return;
+                }
+
+                if (name == null || name.equals("")
+                || username == null || username.equals("")
+                || password == null || password.equals("")){
+                    displayMessage("Please enter a name, username, and password.");
                     return;
                 }
 
                 if (usertypeCheckBox.isChecked()) {
                     //ADD NEW PRACTITIONER
-                    myDB.addPractitionerData(username, name, password);
-                    MainActivity.practitioners.add(new Practitioner(username, name, password));
+                    MainActivity.DBHelper.addPractitionerData(username, name, password);
                 }
 
                 else {
                     //ADD NEW CLIENT
                     String practitioner = practitionerEditText.getText().toString();
-                    myDB.addClientData(username, name, password, practitioner);
-                    MainActivity.clients.add(new Client(username, name, password, practitioner));
+                    MainActivity.DBHelper.addClientData(username, name, password, practitioner);
                 }
 
                 Intent gotoDisplay = new Intent(registerActivity.this, MainActivity.class);
@@ -98,7 +103,6 @@ public class  registerActivity extends AppCompatActivity {
         for (int i = 0; i < MainActivity.clients.size(); i++) {
             Client current = MainActivity.clients.get(i);
             if (current.getUsername().equals(username)) {
-                Toast.makeText(this, "Username unavailable", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -106,11 +110,15 @@ public class  registerActivity extends AppCompatActivity {
         for (int i = 0; i < MainActivity.practitioners.size(); i++) {
             Practitioner current = MainActivity.practitioners.get(i);
             if (current.getUsername().equals(username)) {
-                Toast.makeText(this, "Username unavailable", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
         return true;
+    }
+
+    private void displayMessage(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
     }
 
 

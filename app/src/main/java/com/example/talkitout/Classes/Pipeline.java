@@ -16,6 +16,9 @@ public class Pipeline
 
     private void connectToServer(String message)
     {
+        if (message.equals("")){
+            return;
+        }
         try{
             toServer = new Socket("172.30.190.229", 6789);
             streamFromServer = new BufferedReader(new InputStreamReader((toServer.getInputStream())));
