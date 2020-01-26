@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.talkitout.Classes.Client;
 import com.example.talkitout.Classes.Practitioner;
@@ -19,7 +20,7 @@ public class  registerActivity extends AppCompatActivity {
 
     DatabaseHelper myDB;
     CheckBox usertypeCheckBox;
-    EditText nameEditText,usernameEditText,passwordEditText,practitionerEditText;
+    EditText nameEditText, usernameEditText, passwordEditText, practitionerEditText;
     Button signUpButton;
 
 
@@ -41,8 +42,7 @@ public class  registerActivity extends AppCompatActivity {
 
     }
 
-    private void setupUI()
-    {
+    private void setupUI() {
         signUpButton = findViewById(R.id.signupButton);
         usertypeCheckBox = findViewById(R.id.usercheckBox);
         nameEditText = findViewById(R.id.fullnameEditText);
@@ -51,8 +51,7 @@ public class  registerActivity extends AppCompatActivity {
         practitionerEditText = findViewById(R.id.practitionerEditText);
     }
 
-    private void setUpOnClickListeners()
-    {
+    private void setUpOnClickListeners() {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,41 +59,60 @@ public class  registerActivity extends AppCompatActivity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                if (usertypeCheckBox.isChecked())
-                {
-                    //TO DO
-                    //ADD NEW PRACTITIONER
-                    //Verify new practitioner username is not taken
-                    Intent gotoDisplay = new Intent(registerActivity.this,MainActivity.class);
-                    startActivity(gotoDisplay);
+                if (!isNameAvailable(username)) {
+                    return;
                 }
 
-                else
-                {
-                    //ADD NEW CLIENT
-                    //Verify new client username is not taken
-                    String practitioner = practitionerEditText.getText().toString();
-                    myDB.addClientData(username,name,password,practitioner);
-                    Intent gotoselectInput = new Intent(registerActivity.this,MainActivity.class);
-                    startActivity(gotoselectInput);
+                if (usertypeCheckBox.isChecked()) {
+                    //ADD NEW PRACTITIONER
+                    myDB.addPractitionerData(username, name, password);
+                    MainActivity.practitioners.add(new Practitioner(username, name, password));
                 }
+
+                else {
+                    //ADD NEW CLIENT
+                    String practitioner = practitionerEditText.getText().toString();
+                    myDB.addClientData(username, name, password, practitioner);
+                    MainActivity.clients.add(new Client(username, name, password, practitioner));
+                }
+
+                Intent gotoDisplay = new Intent(registerActivity.this, MainActivity.class);
+                startActivity(gotoDisplay);
             }
+
         });
 
         usertypeCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (usertypeCheckBox.isChecked())
-                {
+                if (usertypeCheckBox.isChecked()) {
                     practitionerEditText.setVisibility(View.INVISIBLE);
-                }
-                else
-                {
+                } else {
                     practitionerEditText.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
+
+    private boolean isNameAvailable(String username) {
+        for (int i = 0; i < MainActivity.clients.size(); i++) {
+            Client current = MainActivity.clients.get(i);
+            if (current.getUsername().equals(username)) {
+                Toast.makeText(this, "Username unavailable", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        for (int i = 0; i < MainActivity.practitioners.size(); i++) {
+            Practitioner current = MainActivity.practitioners.get(i);
+            if (current.getUsername().equals(username)) {
+                Toast.makeText(this, "Username unavailable", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
 }
