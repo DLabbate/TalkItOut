@@ -9,7 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.talkitout.Classes.*;
 
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -28,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String MOOD_COL2 = "CLIENT_USER";
     public static final String MOOD_COL3 = "MESSAGE";
     public static final String MOOD_COL4 = "INTENSITY";
+    public static final String MOOD_COL5 = "DATE";
 
 
     public DatabaseHelper(Context context) {
@@ -43,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " PASSWORD TEXT , NAME TEXT)";
         db.execSQL(createPractitionerTable);
         String createMoodTable = "CREATE TABLE " +  MOOD_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT , " +
-                " CLIENT_USER TEXT , MESSAGE TEXT , INTENSITY INTEGER)";
+                " CLIENT_USER TEXT , MESSAGE TEXT , INTENSITY INTEGER, DATE date)";
         db.execSQL(createMoodTable);
 
     }
@@ -88,13 +92,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean addMoodData(Integer id, String client_user, String message, Integer intensity){
+    public boolean addMoodData(Integer id, String client_user, String message, Integer intensity, Date date){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(MOOD_COL1, id);// Since that's where this item is being stored.
         contentValues.put(MOOD_COL2, client_user);
         contentValues.put(MOOD_COL3, message);
         contentValues.put(MOOD_COL4, intensity);
+        contentValues.put(MOOD_COL5, date.toString());
 
 
         long result = db.insert(MOOD_TABLE_NAME, null, contentValues);
@@ -106,11 +111,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean addPractitionerData(String username, String password){
+    public boolean addPractitionerData(String username, String password, String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(PRACTITIONER_COL1, username);// Since that's where this item is being stored.
         contentValues.put(PRACTITIONER_COL2, password);
+        contentValues.put(PRACTITIONER_COL3, name);
 
         long result = db.insert(PRACTITIONER_TABLE_NAME, null, contentValues);
 
@@ -166,7 +172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String username = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL1));
                 String password = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL2));
                 String name = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL3));
-                practitioners.add(new Practitioner(username,password,name));
+                practitioners.add(new Practitioner(username,name,password));
             }
         }
         finally
@@ -176,6 +182,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return practitioners;
     }
+
+    public ArrayList<Mood> getAllMoods()
+    {
+        ArrayList<Mood> moods = new ArrayList<Mood>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        cursor.moveToFirst();
+
+
+        try{
+            while (cursor.moveToNext())
+            {
+                Integer id = cursor.getInt(cursor.getColumnIndex(MOOD_COL1));
+                String client_username = cursor.getString(cursor.getColumnIndex(MOOD_COL2));
+                String message = cursor.getString(cursor.getColumnIndex(MOOD_COL3));
+                Integer intensity = cursor.getInt(cursor.getColumnIndex(MOOD_COL4));
+                //String date = cursor.getString(cursor.getColumnIndex(MOOD_COL5));
+                //try {
+                //Date new_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                //}
+                //catch{
+
+                //}
+
+                moods.add(new Mood(id, client_username, message, intensity));
+            }
+        }
+        finally
+        {
+            db.close();
+        }
+
+        return moods;
+    }
+
+
 
 
 

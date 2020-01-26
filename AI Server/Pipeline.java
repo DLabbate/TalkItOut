@@ -10,11 +10,7 @@ import java.util.*;
 class Pipeline 
 {
 
-	public static String Placeholder = "I want to kill myself. " +
-									   "I am having a bad day. " +
-									   "My day could be going better. " +
-									   "My day is going okay. " +
-									   "Thank you for all your help. ";
+	public static String Placeholder = "Kittens are amazing!";
 	
 	public static void main(String[] args)
 	{
@@ -26,8 +22,8 @@ class Pipeline
 		// Start pipeline
 		StanfordCoreNLP pipeline = new StanfordCoreNLP(modelProperties);
 		
-		// Get client's input
-		Annotation clientInput = new Annotation(Placeholder);
+		// Get client's input and preprocess it
+		Annotation clientInput = new Annotation(preprocessing(Placeholder));
 		pipeline.annotate(clientInput);
 		
 		// Put client's input into a map (split per sentence)
@@ -66,5 +62,12 @@ class Pipeline
 		}
 		return sum/array.length;
 		
+	}
+	
+	public static String preprocessing(String text)
+	{
+		String processedString = text.toLowerCase().replaceAll("[^a-zA-Z0-9\\s.\']", "");
+		
+		return processedString;
 	}
 }

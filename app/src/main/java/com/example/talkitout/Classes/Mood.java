@@ -1,14 +1,21 @@
 package com.example.talkitout.Classes;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class Mood {
-    String date;
     String message;
     int intensity;
+    String client_username;
+    int id;
+    //Date date;
 
-    public Mood(String date,String message,int intensity)
+
+    public Mood(Integer id, String client_username, String message, int intensity)
     {
-        this.date = date;
+        //this.date = date;
         this.message = message;
         this.intensity = intensity;
+        this.id = id;
+        this.client_username = client_username;
     }
 }
