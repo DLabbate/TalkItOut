@@ -19,18 +19,20 @@ public class graphActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+        System.out.println(currentClient);
 
         double y;
         //x = -5.0;
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
-
+        Integer count=0;
         for(int i = 0; i<MainActivity.moods.size(); i++){
-            if(MainActivity.moods.get(i).getClient_username() == currentClient){
-                y = MainActivity.moods.get(i).getIntensity();
+            if(MainActivity.moods.get(i).getClient_username().equals(currentClient)){
+                y = MainActivity.moods.get(count).getIntensity();
                 //Mood current = moods(i);
-                series.appendData(new DataPoint(i,y), true, 7);
+                series.appendData(new DataPoint(count, y), true, 7);
+                count++;
             }
         }
 

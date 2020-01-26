@@ -81,7 +81,10 @@ public class MainActivity extends AppCompatActivity {
         //Date date = Date.valueOf("2020-01-10 12:08:5.5");
         //System.out.println("##############" + date.toString());
 
-
+        for (int i=0 ; i<moods.size(); i++)
+        {
+            System.out.println(moods.get(i).getIntensity());
+        }
 
         for (int i=0 ; i<clients.size(); i++)
         {
