@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CLIENT_COL4 = "PRACTITIONER";
     public static final String PRACTITIONER_COL1 = "USERNAME";
     public static final String PRACTITIONER_COL2 = "PASSWORD";
+    public static final String PRACTITIONER_COL3 = "NAME";
     public static final String MOOD_COL1 = "ID";
     public static final String MOOD_COL2 = "CLIENT_USER";
     public static final String MOOD_COL3 = "MESSAGE";
@@ -39,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " NAME TEXT , PASSWORD TEXT , PRACTITIONER TEXT)";
         db.execSQL(createClientTable);
         String createPractitionerTable = "CREATE TABLE " +  PRACTITIONER_TABLE_NAME + " (USERNAME TEXT , " +
-                " PASSWORD TEXT)";
+                " PASSWORD TEXT , NAME TEXT)";
         db.execSQL(createPractitionerTable);
         String createMoodTable = "CREATE TABLE " +  MOOD_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT , " +
                 " CLIENT_USER TEXT , MESSAGE TEXT , INTENSITY INTEGER)";
@@ -50,7 +51,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + CLIENT_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + PRACTITIONER_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + MOOD_TABLE_NAME);
     }
+
 
     /*
     public boolean addData(String item1){
@@ -84,11 +88,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean addMoodData(Integer id, String client_user, String message, Integer intensity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MOOD_COL1, id);// Since that's where this item is being stored.
+        contentValues.put(MOOD_COL2, client_user);
+        contentValues.put(MOOD_COL3, message);
+        contentValues.put(MOOD_COL4, intensity);
+
+
+        long result = db.insert(MOOD_TABLE_NAME, null, contentValues);
+
+        if (result == -1){
+            return false;
+        }
+        return true;
+    }
+
+
+    public boolean addPractitionerData(String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PRACTITIONER_COL1, username);// Since that's where this item is being stored.
+        contentValues.put(PRACTITIONER_COL2, password);
+
+        long result = db.insert(PRACTITIONER_TABLE_NAME, null, contentValues);
+
+        if (result == -1){
+            return false;
+        }
+        return true;
+    }
+
+
     public Cursor getListContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("Select * FROM " + CLIENT_TABLE_NAME, null);
         return data;
     }
+
 
     public ArrayList<Client> getAllClients()
     {
@@ -114,6 +152,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return clients;
     }
+
+    public ArrayList<Practitioner> getAllPractitioners()
+    {
+        ArrayList<Practitioner> practitioners = new ArrayList<Practitioner>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        cursor.moveToFirst();
+
+        try{
+            while (cursor.moveToNext())
+            {
+                String username = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL1));
+                String password = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL2));
+                String name = cursor.getString(cursor.getColumnIndex(PRACTITIONER_COL3));
+                practitioners.add(new Practitioner(username,password,name));
+            }
+        }
+        finally
+        {
+            db.close();
+        }
+
+        return practitioners;
+    }
+
 
 
 }
