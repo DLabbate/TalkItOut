@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login() {
         Intent intent = new Intent(this, selectInput.class);
+        Intent intent1 = new Intent (this, displayActivity.class);
 
         String usernameInput = userEditText.getText().toString();
         String passwordInput = passEditText.getText().toString();
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     current.getPassword().equals(passwordInput)) {
                 this.loggedInUser = usernameInput;
                 this.loggedInStatus = status.Practitioner;
-                startActivity(intent);
+                startActivity(intent1);
                 return;
             }
         }
