@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " PASSWORD TEXT , NAME TEXT)";
         db.execSQL(createPractitionerTable);
         String createMoodTable = "CREATE TABLE " +  MOOD_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT , " +
-                " CLIENT_USER TEXT , MESSAGE TEXT , INTENSITY INTEGER, DATE date)";
+                " CLIENT_USER TEXT , MESSAGE TEXT , INTENSITY INTEGER, DATE TEXT)";
         db.execSQL(createMoodTable);
 
     }
@@ -95,15 +95,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean addMoodData(Integer id, String client_user, String message, Integer intensity, Date date){
+    public boolean addMoodData(Integer id, String client_user, String message, Integer intensity, String date){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(MOOD_COL1, id);// Since that's where this item is being stored.
         contentValues.put(MOOD_COL2, client_user);
         contentValues.put(MOOD_COL3, message);
         contentValues.put(MOOD_COL4, intensity);
-        contentValues.put(MOOD_COL5, date.toString());
-
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String date = sdf.format(new Date());
+        contentValues.put(MOOD_COL5, date);
 
         long result = db.insert(MOOD_TABLE_NAME, null, contentValues);
 
@@ -201,15 +202,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String client_username = cursor.getString(cursor.getColumnIndex(MOOD_COL2));
                 String message = cursor.getString(cursor.getColumnIndex(MOOD_COL3));
                 Integer intensity = cursor.getInt(cursor.getColumnIndex(MOOD_COL4));
-                //String date = cursor.getString(cursor.getColumnIndex(MOOD_COL5));
+
+                String date = cursor.getString(cursor.getColumnIndex(MOOD_COL5));
                 //try {
-                //Date new_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                //new_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
                 //}
                 //catch{
 
                 //}
 
-                moods.add(new Mood(id, client_username, message, intensity));
+                moods.add(new Mood(id, client_username, message, intensity, date));
             }
         }
         finally

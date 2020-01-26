@@ -7,15 +7,17 @@ public class Mood {
     int intensity;
     String client_username;
     int id;
+    String date;
     //Date date;
 
 
-    public Mood(Integer id, String client_username, String message, int intensity)
+    public Mood(Integer id, String client_username, String message, int intensity, String date)
     {
         //this.date = date;
         this.message = message;
         this.intensity = intensity;
         this.id = id;
         this.client_username = client_username;
+        this.date = date;
     }
 }

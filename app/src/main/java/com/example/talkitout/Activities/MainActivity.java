@@ -13,9 +13,11 @@ import android.widget.Toast;
 import android.text.method.HideReturnsTransformationMethod;
 
 import com.example.talkitout.Classes.Client;
+import com.example.talkitout.Classes.Mood;
 import com.example.talkitout.Classes.Practitioner;
 import com.example.talkitout.R;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public static DatabaseHelper DBHelper;
     public static ArrayList<Client> clients;
     public static ArrayList<Practitioner> practitioners;
+    public static ArrayList<Mood> moods;
+
 
     public enum status {
         Practitioner,
@@ -66,12 +70,22 @@ public class MainActivity extends AppCompatActivity {
         passEditText.setText("");
         clients = DBHelper.getAllClients();
         practitioners = DBHelper.getAllPractitioners();
-
+        moods = DBHelper.getAllMoods();
 
 //        //**TEST CODE*************************************************************
 //        DBHelper.addClientData("dlabbate","Domenic Labbate","mypassword","1234");
 //        DBHelper.addClientData("mgrande","MGrande","hispassword","4321");
 //        ArrayList<Client> testclients = DBhelper.getAllClients();
+
+        //TEST CODE FOR MOOD********************
+
+
+        //DBHelper.addMoodData(123, "john", "message", 5, "2020-01-10 12:08:5.5");
+        Date date = Date.valueOf("2020-01-10 12:08:5.5");
+        System.out.println("##############" + date.toString());
+
+
+
         for (int i=0 ; i<clients.size(); i++)
         {
             String username = clients.get(i).getUsername();
@@ -139,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, registerActivity.class);
         startActivity(intent);
     }
+
+
+
+
 
 
 
