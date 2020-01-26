@@ -10,7 +10,7 @@ import java.util.*;
 class Pipeline 
 {
 
-	public static String Placeholder = "Kittens are amazing!";
+	public static String Placeholder = null;
 	
 	public static void main(String[] args)
 	{
@@ -32,9 +32,11 @@ class Pipeline
 	/**
 	 * The predictions are on a 5 point scale
 	 * 1 = very negative, 2 = negative, 3 = neutral, 4 = positive, 5 = very positive
+	 * 0 indicates an error (usually, an empty string or null was given as input)
 	 */
 	public static int predictSentiment(List<CoreMap> sentences)
 	{
+		int x;
 		int i = 0;
 		int[] scores = new int[sentences.size()];
 		for(CoreMap sentence: sentences)
@@ -43,10 +45,18 @@ class Pipeline
 			scores[i] = 1+(int)RNNCoreAnnotations.getPredictedClass(tree);
 			i++;
 		}
-		return mean(scores);
+		try
+		{
+			x = mean(scores);
+		}
+		catch(ArithmeticException ex)
+		{
+			x = 0;
+		}
+		return x;
 	}
 	
-	public static int mean(int[] array)
+	public static int mean(int[] array) throws ArithmeticException
 	{
 		int sum = 0;
 		int i = 0;
@@ -62,8 +72,15 @@ class Pipeline
 	
 	public static String preprocessing(String text)
 	{
-		String processedString = text.toLowerCase().replaceAll("[^a-zA-Z0-9\\s.\']", "");
-		
+		String processedString = null;
+		try
+		{
+			processedString = text.toLowerCase().replaceAll("[^a-zA-Z0-9\\s.\']", "");
+		}
+		catch(NullPointerException e)
+		{
+			processedString = "";
+		}
 		return processedString;
 	}
 	

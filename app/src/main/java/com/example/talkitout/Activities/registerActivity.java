@@ -72,7 +72,7 @@ public class  registerActivity extends AppCompatActivity {
 
                 if (usertypeCheckBox.isChecked()) {
                     //ADD NEW PRACTITIONER
-                    MainActivity.DBHelper.addPractitionerData(username, name, password);
+                    MainActivity.DBHelper.addPractitionerData(username, password, name);
                 }
 
                 else {

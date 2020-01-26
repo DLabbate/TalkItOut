@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     current.getPassword().equals(passwordInput)) {
                 this.loggedInUser = usernameInput;
                 this.loggedInStatus = status.Client;
-                startActivity(intent);
+                startActivity(intent); // TODO Change from selectinput to the clientView
                 return;
             }
         }
