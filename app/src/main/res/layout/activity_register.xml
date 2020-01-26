@@ -11,7 +11,7 @@
         android:id="@+id/fullnameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
@@ -41,11 +41,23 @@
         app:layout_constraintStart_toStartOf="@+id/usernameEditText"
         app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
+    <EditText
+        android:id="@+id/practitionerEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Practitioner Username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/signupButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/signupButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="76dp"
         android:text="SIGN UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,13 +66,12 @@
 
     <CheckBox
         android:id="@+id/usercheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="199dp"
+        android:layout_height="42dp"
         android:text="Are you a practitioner?"
-        app:layout_constraintBottom_toTopOf="@+id/signupButton"
+        app:layout_constraintBottom_toTopOf="@+id/practitionerEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
