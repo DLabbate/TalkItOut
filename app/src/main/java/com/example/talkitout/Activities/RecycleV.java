@@ -38,11 +38,6 @@ public class RecycleV extends AppCompatActivity {
                 mClients.add(c);
             }
         }
-//        Client first = new Client("abc", "def", "ghi", "lmo");
-//        mClients.add(first);
-//        mClients.add(first);
-//        mClients.add(first);
-//        mClients.add(first);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
