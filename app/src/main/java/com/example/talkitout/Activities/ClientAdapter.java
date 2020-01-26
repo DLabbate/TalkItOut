@@ -35,8 +35,7 @@ class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder>{
         holder.mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent;
-                intent =  new Intent(v.getContext(), graphActivity.class);
+                Intent intent = new Intent(v.getContext(), graphActivity.class);
                 v.getContext().startActivity(intent);
                 graphActivity.currentClient = n;
             }

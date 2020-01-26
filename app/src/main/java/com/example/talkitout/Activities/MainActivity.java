@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login() {
         Intent intent = new Intent(this, selectInput.class);
-        Intent intent1 = new Intent (this, displayActivity.class);
+        Intent intent1 = new Intent(this, RecycleV.class);
 
         String usernameInput = userEditText.getText().toString();
         String passwordInput = passEditText.getText().toString();
@@ -150,9 +150,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void register() {
-        Intent intent = new Intent(this, RecycleV.class);
+        Intent intent = new Intent(this, registerActivity.class);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-//        Intent intent = new Intent(this, registerActivity.class);
         startActivity(intent);
     }
 
